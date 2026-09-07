@@ -3,9 +3,12 @@ SagarManthan API — Intelligent Freight Forecasting & Vessel Chartering Decisio
 SIH 2026 — Problem Statement SIH26006
 """
 
+from pathlib import Path
 from fastapi import FastAPI
+from starlette.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.routes import router
+FRONTEND_DIR = Path(__file__).resolve().parent / "static"
 
 app = FastAPI(
     title="SagarManthan API",
