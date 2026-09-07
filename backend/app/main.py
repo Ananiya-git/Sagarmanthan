@@ -6,6 +6,7 @@ SIH 2026 — Problem Statement SIH26006
 from pathlib import Path
 from fastapi import FastAPI
 from starlette.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.routes import router
 FRONTEND_DIR = Path(__file__).resolve().parent / "static"
@@ -27,6 +28,7 @@ app.add_middleware(
 )
 
 app.include_router(router, prefix="/api")
+app.mount("/assets", StaticFiles(directory=FRONTEND_DIR / "assets"), name="assets")
 
 
 @app.get("/")
