@@ -28,6 +28,8 @@ app.include_router(router, prefix="/api")
 
 @app.get("/")
 def root():
+    if FRONTEND_DIR.exists():
+        return FileResponse(FRONTEND_DIR / "index.html")
     return {
         "name": "SagarManthan",
         "tagline": "From Reactive Spot Chartering to Predictive Multi-Voyage Intelligence",
